@@ -31,6 +31,18 @@ services:
     restart: always
     networks:
       - bridge
+  nginx:
+    container_name: ${PROJECT:-backend}_nginx
+    image: ${PROJECT:-backend}-nginx:latest
+    build: nginx
+    volumes:
+      - ./backend/static:/backend/static
+      - ./backend/media:/backend/media
+    ports:
+      - "${NGINX_PORT:-80}:80"
+    restart: always
+    networks:
+      - bridge
 
 networks:
   bridge:
