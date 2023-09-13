@@ -15,7 +15,6 @@ docker-compose up -d
 
 ```
 python manage.py makemigrations project
-python manage.py migrate project
 python manage.py migrate
 python manage.py makemigrations api
 python manage.py migrate api
