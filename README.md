@@ -44,5 +44,5 @@ http://localhost/auth/
 
 #### If you want to see the API docs, then use
 ```
-http://localhost:8000/docs/
+http://localhost/docs/
 ```
