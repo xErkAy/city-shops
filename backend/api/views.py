@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from django.db.models import QuerySet
+from django.db.models import QuerySet, Q
 
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -54,7 +54,9 @@ class ShopAPIView(APIView):
             if open in [1, '1', 'true']:
                 queryset = queryset.filter(open_time__lte=now, close_time__gte=now)
             else:
-                queryset = queryset.filter(open_time__gte=now, close_time__lte=now)
+                queryset = queryset.filter(
+                    Q(open_time__gte=now, close_time__lte=now) | Q(open_time__gte=now, close_time__gte=now)
+                )
 
         queryset = self.filter_city_street(queryset, params)
 
