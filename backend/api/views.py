@@ -51,7 +51,7 @@ class ShopAPIView(APIView):
         open = params.get('open')
         if open is not None:
             now = datetime.now().time()
-            if open in [1, '1', 'true']:
+            if open in [1, '1', 'true', '']:
                 queryset = queryset.filter(open_time__lte=now, close_time__gte=now)
             else:
                 queryset = queryset.filter(
